@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SITU® Pricing Operating System</title>
+
+<style>
+
+:root{
+    --bg:#f5f4f1;
+    --card:#ffffff;
+    --line:#ebe7df;
+    --text:#111;
+    --muted:#7b7b7b;
+    --gold:#b69b63;
+    --green:#2d7c5b;
+    --orange:#c69244;
+    --red:#c45a5a;
+
+    --shadow:
+    0 1px 2px rgba(0,0,0,.03),
+    0 10px 30px rgba(0,0,0,.04);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Noto Sans TC",
+    sans-serif;
+}
+
+.wrapper{
+    max-width:1500px;
+    margin:auto;
+    padding:50px 28px;
+}
+
+.topbar{
+    margin-bottom:38px;
+}
+
+.brand{
+    font-size:34px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.subtitle{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--muted);
+    letter-spacing:1px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:460px 1fr;
+    gap:24px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:30px;
+    border:1px solid var(--line);
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.section-title{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:var(--gold);
+    margin-bottom:26px;
+}
+
+.input-group{
+    margin-bottom:22px;
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    font-size:13px;
+    font-weight:600;
+    color:#555;
+}
+
+input,
+select{
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid var(--line);
+    background:white;
+    font-size:15px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:var(--gold);
+}
+
+.range-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin-top:22px;
+}
+
+.range-card{
+    background:#faf9f7;
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:18px;
+}
+
+.range-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+    font-size:13px;
+}
+
+input[type="range"]{
+    padding:0;
+}
+
+.logic-box{
+    margin-top:24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.logic-card{
+    background:#faf8f4;
+    border:1px solid #eee7d7;
+    border-radius:22px;
+    padding:20px;
+}
+
+.logic-title{
+    font-size:12px;
+    color:#9a8255;
+    letter-spacing:1px;
+    margin-bottom:12px;
+}
+
+.logic-text{
+    font-size:13px;
+    line-height:1.9;
+    color:#666;
+}
+
+.hero{
+    background:#121212;
+    color:white;
+    border-radius:32px;
+    padding:36px;
+    margin-bottom:22px;
+}
+
+.formula{
+    font-size:12px;
+    color:#8c8c8c;
+    margin-bottom:12px;
+    letter-spacing:.3px;
+}
+
+.hero-label{
+    font-size:12px;
+    color:#9f9f9f;
+    letter-spacing:1px;
+}
+
+.hero-price{
+    font-size:68px;
+    font-weight:700;
+    margin:14px 0;
+    letter-spacing:-2px;
+}
+
+.hero-sub{
+    color:#a5a5a5;
+    font-size:14px;
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.metric{
+    background:white;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+.metric-label{
+    font-size:12px;
+    color:#777;
+    line-height:1.7;
+    margin-bottom:12px;
+}
+
+.metric-value{
+    font-size:28px;
+    font-weight:700;
+}
+
+.metric-sub{
+    margin-top:8px;
+    font-size:12px;
+    color:#888;
+}
+
+.grade-system{
+    margin-top:22px;
+    background:white;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:var(--shadow);
+}
+
+.grade-header{
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--gold);
+    margin-bottom:18px;
+}
+
+.grade-current{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:18px;
+}
+
+.grade-current-title{
+    color:#777;
+    font-size:14px;
+}
+
+.grade-current-value{
+    font-size:24px;
+    font-weight:700;
+}
+
+.grade-list{
+    display:grid;
+    gap:12px;
+}
+
+.grade-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
+    border-radius:16px;
+    background:#faf9f7;
+}
+
+.grade-left{
+    font-weight:600;
+}
+
+.grade-right{
+    font-size:13px;
+    color:#777;
+}
+
+.good{
+    color:var(--green);
+}
+
+.mid{
+    color:var(--orange);
+}
+
+.bad{
+    color:var(--red);
+}
+
+.note{
+    margin-top:24px;
+    font-size:12px;
+    line-height:1.9;
+    color:#777;
+}
+
+.badge{
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:999px;
+    background:#f2eee7;
+    color:#8c7446;
+    font-size:11px;
+    margin-right:8px;
+}
+
+@media(max-width:1200px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .metrics{
+        grid-template-columns:1fr;
+    }
+
+    .logic-box{
+        grid-template-columns:1fr;
+    }
+
+    .range-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-price{
+        font-size:54px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="topbar">
+
+        <div class="brand">
+            SITU®
+        </div>
+
+        <div class="subtitle">
+            Pricing Operating System
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <!-- LEFT -->
+        <div class="card">
+
+            <div class="section-title">
+                Product Parameters｜產品參數
+            </div>
+
+            <!-- 類別 -->
+            <div class="input-group">
+
+                <label>產品類別｜Category</label>
+
+                <select id="category" onchange="toggleSize()">
+
+                    <option value="designerBracelet">
+                        設計款水晶手鍊｜Designer Crystal Bracelet
+                    </option>
+
+                    <option value="crystalBracelet">
+                        水晶手鍊｜Crystal Bracelet
+                    </option>
+
+                    <option value="necklace">
+                        項鍊｜Necklace
+                    </option>
+
+                    <option value="ring">
+                        戒指｜Ring
+                    </option>
+
+                    <option value="earrings">
+                        耳環｜Earrings
+                    </option>
+
+                    <option value="decor">
+                        擺件｜Decor
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- SKU Position -->
+            <div class="input-group">
+
+                <label>
+                    SKU Positioning｜商品定位
+                </label>
+
+                <select id="positioning" onchange="calculate()">
+
+                    <option value="entry">
+                        Entry｜引流款
+                    </option>
+
+                    <option value="core" selected>
+                        Core｜主力款
+                    </option>
+
+                    <option value="premium">
+                        Premium｜高端款
+                    </option>
+
+                    <option value="collector">
+                        Collector｜收藏級
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- 尺寸 -->
+            <div class="input-group" id="sizeDiv">
+
+                <label>
+                    手鍊尺寸｜Bracelet Size
+                </label>
+
+                <select id="size" onchange="calculate()">
+
+                    <option value="normal">
+                        14.5 / 15 / 16｜Standard
+                    </option>
+
+                    <option value="large">
+                        17 / 18｜Large (+15%)
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- 成本 -->
+            <div class="input-group">
+
+                <label>
+                    商品成本 RMB｜Product Cost
+                </label>
+
+                <input
+                    type="number"
+                    id="costRmb"
+                    value="300"
+                    oninput="calculate()"
+                >
+
+            </div>
+
+            <!-- 拉桿區 -->
+            <div class="range-grid">
+
+                <!-- 運費 -->
+                <div class="range-card">
+
+                    <div class="range-top">
+
+                        <span>
+                            雲途運費
+                        </span>
+
+                        <span id="shippingValue">
+                            ¥150
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="shippingRmb"
+                        min="0"
+                        max="500"
+                        value="150"
+                        oninput="calculate()"
+                    >
+
+                </div>
+
+                <!-- CAC -->
+                <div class="range-card">
+
+                    <div class="range-top">
+
+                        <span>
+                            CAC
+                        </span>
+
+                        <span id="adValue">
+                            $40
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="adCost"
+                        min="0"
+                        max="150"
+                        value="40"
+                        oninput="calculate()"
+                    >
+
+                </div>
+
+                <!-- Tax -->
+                <div class="range-card">
+
+                    <div class="range-top">
+
+                        <span>
+                            Tax
+                        </span>
+
+                        <span id="taxValue">
+                            15%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="taxRate"
+                        min="0"
+                        max="30"
+                        value="15"
+                        oninput="calculate()"
+                    >
+
+                </div>
+
+                <!-- Discount -->
+                <div class="range-card">
+
+                    <div class="range-top">
+
+                        <span>
+                            Discount
+                        </span>
+
+                        <span id="discountValue">
+                            5%
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="discountRate"
+                        min="0"
+                        max="30"
+                        value="5"
+                        oninput="calculate()"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Manual -->
+            <div class="input-group" style="margin-top:24px;">
+
+                <label>
+                    手動倍率覆蓋｜Manual Markup
+                </label>
+
+                <input
+                    type="number"
+                    step="0.1"
+                    id="manualMarkup"
+                    placeholder="留空則使用自動倍率"
+                    oninput="calculate()"
+                >
+
+            </div>
+
+            <!-- Logic -->
+            <div class="logic-box">
+
+                <!-- Auto Markup -->
+                <div class="logic-card">
+
+                    <div class="logic-title">
+                        AUTO MARKUP LOGIC
+                    </div>
+
+                    <div class="logic-text">
+
+                        ¥0~80 → 6.5x<br>
+                        ¥80~300 → 5.0x<br>
+                        ¥300~800 → 4.2x<br>
+                        ¥800~1500 → 3.5x<br>
+                        ¥1500+ → 2.8x
+
+                    </div>
+
+                </div>
+
+                <!-- Positioning -->
+                <div class="logic-card">
+
+                    <div class="logic-title">
+                        SKU POSITIONING
+                    </div>
+
+                    <div class="logic-text">
+
+                        Entry → 引流轉換<br>
+                        Core → 主力營收<br>
+                        Premium → 高端利潤<br>
+                        Collector → 品牌高度
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Notes -->
+            <div class="note">
+
+                <span class="badge">
+                    Shopify
+                </span>
+
+                月費分攤：$39/month
+
+                <br><br>
+
+                <span class="badge">
+                    Free Shipping
+                </span>
+
+                建議免運門檻：$119 USD
+
+                <br><br>
+
+                <span class="badge">
+                    FX Buffer
+                </span>
+
+                已內建 2% 匯損預留
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div>
+
+            <!-- HERO -->
+            <div class="hero">
+
+                <!-- 算式 -->
+                <div class="formula" id="formulaText">
+
+                    (成本 + 運費) × 倍率
+
+                </div>
+
+                <div class="hero-label">
+
+                    建議售價｜Recommended Retail Price
+
+                </div>
+
+                <div class="hero-price" id="finalUsd">
+
+                    $0
+
+                </div>
+
+                <div class="hero-sub" id="priceSub">
+
+                    —
+
+                </div>
+
+            </div>
+
+            <!-- Metrics -->
+            <div class="metrics">
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        比較售價｜Compare-at
+                    </div>
+
+                    <div class="metric-value" id="comparePrice">
+                        $0
+                    </div>
+
+                </div>
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        自動倍率｜Auto Markup
+                    </div>
+
+                    <div class="metric-value" id="markupDisplay">
+                        0x
+                    </div>
+
+                </div>
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        打平 ROAS｜Break-even
+                    </div>
+
+                    <div class="metric-value" id="breakEvenRoas">
+                        0x
+                    </div>
+
+                </div>
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        淨利潤｜Net Profit
+                    </div>
+
+                    <div class="metric-value" id="netProfit">
+                        $0
+                    </div>
+
+                    <div class="metric-sub" id="profitTwd">
+                        約 NT$0
+                    </div>
+
+                </div>
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        淨利率｜Net Margin
+                    </div>
+
+                    <div class="metric-value" id="netMargin">
+                        0%
+                    </div>
+
+                </div>
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        貢獻毛利率｜Contribution Margin
+                    </div>
+
+                    <div class="metric-value" id="contributionMargin">
+                        0%
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Grade -->
+            <div class="grade-system">
+
+                <div class="grade-header">
+                    SKU HEALTH SYSTEM
+                </div>
+
+                <div class="grade-current">
+
+                    <div class="grade-current-title">
+                        Current SKU Grade
+                    </div>
+
+                    <div class="grade-current-value" id="skuGrade">
+                        A
+                    </div>
+
+                </div>
+
+                <div class="grade-list">
+
+                    <div class="grade-item">
+
+                        <div class="grade-left good">
+                            S｜Elite Scale
+                        </div>
+
+                        <div class="grade-right">
+                            高利潤・可大規模投放
+                        </div>
+
+                    </div>
+
+                    <div class="grade-item">
+
+                        <div class="grade-left good">
+                            A｜Healthy
+                        </div>
+
+                        <div class="grade-right">
+                            穩定健康・適合主力商品
+                        </div>
+
+                    </div>
+
+                    <div class="grade-item">
+
+                        <div class="grade-left mid">
+                            B｜Testing
+                        </div>
+
+                        <div class="grade-right">
+                            可測試・需優化廣告
+                        </div>
+
+                    </div>
+
+                    <div class="grade-item">
+
+                        <div class="grade-left bad">
+                            C｜Danger
+                        </div>
+
+                        <div class="grade-right">
+                            不建議放量
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   匯率
+========================= */
+
+const USD_TO_RMB = 7.1;
+const USD_TO_TWD = 32.5;
+
+/* =========================
+   顯示尺寸
+========================= */
+
+function toggleSize(){
+
+    const category =
+        document.getElementById('category').value;
+
+    const braceletTypes =
+        ['designerBracelet','crystalBracelet'];
+
+    document.getElementById('sizeDiv').style.display =
+        braceletTypes.includes(category)
+        ? 'block'
+        : 'none';
+
+    calculate();
+}
+
+/* =========================
+   主計算
+========================= */
+
+function calculate(){
+
+    let costRmb =
+        parseFloat(document.getElementById('costRmb').value) || 0;
+
+    const shippingRmb =
+        parseFloat(document.getElementById('shippingRmb').value);
+
+    const adCost =
+        parseFloat(document.getElementById('adCost').value);
+
+    const taxRate =
+        parseFloat(document.getElementById('taxRate').value) / 100;
+
+    const discountRate =
+        parseFloat(document.getElementById('discountRate').value) / 100;
+
+    const manualMarkup =
+        parseFloat(document.getElementById('manualMarkup').value);
+
+    const positioning =
+        document.getElementById('positioning').value;
+
+    /* UI */
+
+    document.getElementById('shippingValue').innerText =
+        `¥${shippingRmb}`;
+
+    document.getElementById('adValue').innerText =
+        `$${adCost}`;
+
+    document.getElementById('taxValue').innerText =
+        `${Math.round(taxRate * 100)}%`;
+
+    document.getElementById('discountValue').innerText =
+        `${Math.round(discountRate * 100)}%`;
+
+    /* 大尺寸加成 */
+
+    if(
+        document.getElementById('size').value === 'large'
+    ){
+        costRmb *= 1.15;
+    }
+
+    /* =========================
+       Auto Markup
+    ========================= */
+
+    let autoMarkup = 4.5;
+
+    if(costRmb < 80){
+        autoMarkup = 6.5;
+    }
+    else if(costRmb < 300){
+        autoMarkup = 5.0;
+    }
+    else if(costRmb < 800){
+        autoMarkup = 4.2;
+    }
+    else if(costRmb < 1500){
+        autoMarkup = 3.5;
+    }
+    else{
+        autoMarkup = 2.8;
+    }
+
+    /* =========================
+       SKU Positioning
+    ========================= */
+
+    let positionMultiplier = 1;
+
+    if(positioning === 'entry'){
+        positionMultiplier = 0.55;
+    }
+    else if(positioning === 'core'){
+        positionMultiplier = 1;
+    }
+    else if(positioning === 'premium'){
+        positionMultiplier = 1.25;
+    }
+    else if(positioning === 'collector'){
+        positionMultiplier = 1.6;
+    }
+
+    autoMarkup *= positionMultiplier;
+
+    /* 手動覆蓋 */
+
+    const finalMarkup =
+        manualMarkup || autoMarkup;
+
+    /* 顯示倍率 */
+
+    document.getElementById('markupDisplay').innerText =
+        `${finalMarkup.toFixed(1)}x`;
+
+    /* 成本 */
+
+    const hardCostUsd =
+        (costRmb + shippingRmb) / USD_TO_RMB;
+
+    /* Shopify */
+
+    const shopifyAllocation =
+        39 / 30;
+
+    /* 匯損 */
+
+    const fxReserve = 0.02;
+
+    /* 售價 */
+
+    let salePrice =
+        hardCostUsd * finalMarkup;
+
+    /* 心理定價 */
+
+    salePrice =
+        Math.round(salePrice / 10) * 10 - 0.1;
+
+    /* 金流 */
+
+    const gatewayFee =
+        (salePrice * 0.034) + 0.3;
+
+    /* 匯損 */
+
+    const fxLoss =
+        salePrice * fxReserve;
+
+    /* 折扣 */
+
+    const discountReserve =
+        salePrice * discountRate;
+
+    /* 稅 */
+
+    const taxCost =
+        salePrice * taxRate;
+
+    /* 淨利 */
+
+    const netProfit =
+        salePrice
+        - hardCostUsd
+        - adCost
+        - gatewayFee
+        - fxLoss
+        - discountReserve
+        - taxCost
+        - shopifyAllocation;
+
+    /* Margin */
+
+    const netMargin =
+        (netProfit / salePrice) * 100;
+
+    /* Contribution */
+
+    const contributionMargin =
+        (
+            (
+                salePrice
+                - adCost
+                - gatewayFee
+                - hardCostUsd
+            )
+            / salePrice
+        ) * 100;
+
+    /* ROAS */
+
+    const breakEvenRoas =
+        salePrice / adCost;
+
+    /* Compare */
+
+    const comparePrice =
+        Math.round((salePrice * 1.3) / 10) * 10 - 0.1;
+
+    /* Grade */
+
+    let grade = 'C';
+
+    if(netMargin >= 35 && breakEvenRoas >= 3){
+        grade = 'S';
+    }
+    else if(netMargin >= 25){
+        grade = 'A';
+    }
+    else if(netMargin >= 12){
+        grade = 'B';
+    }
+
+    /* 算式 */
+
+    document.getElementById('formulaText').innerText =
+        `(${hardCostUsd.toFixed(0)} USD × ${finalMarkup.toFixed(1)}x)`;
+
+    /* UI */
+
+    document.getElementById('finalUsd').innerText =
+        `$${salePrice.toFixed(2)}`;
+
+    document.getElementById('comparePrice').innerText =
+        `$${comparePrice.toFixed(2)}`;
+
+    document.getElementById('priceSub').innerHTML =
+        `
+        約 NT$ ${(salePrice * USD_TO_TWD).toLocaleString()}
+        ｜ RMB ¥ ${(salePrice * USD_TO_RMB).toLocaleString()}
+        `;
+
+    document.getElementById('netProfit').innerText =
+        `$${netProfit.toFixed(2)}`;
+
+    document.getElementById('profitTwd').innerText =
+        `約 NT$ ${(netProfit * USD_TO_TWD).toLocaleString()}`;
+
+    document.getElementById('netMargin').innerText =
+        `${netMargin.toFixed(1)}%`;
+
+    document.getElementById('contributionMargin').innerText =
+        `${contributionMargin.toFixed(1)}%`;
+
+    document.getElementById('breakEvenRoas').innerText =
+        `${breakEvenRoas.toFixed(1)}x`;
+
+    document.getElementById('skuGrade').innerText =
+        grade;
+}
+
+/* 初始化 */
+
+toggleSize();
+
+</script>
+
+</body>
+</html>
